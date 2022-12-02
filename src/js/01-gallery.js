@@ -13,11 +13,26 @@ const gallery = createGallery(galleryItems);
 galleryContainer.innerHTML = gallery;
 galleryContainer.addEventListener('click', clickOnGallery);
 
-let lightbox = $('.gallery a').simpleLightbox({
-  scrollZoom: false,
-  captionsData: 'alt',
-  captionDelay: 250,
-});
+function clickOnGallery(event) {
+  event.preventDefault();
+  if (event.target.nodeName !== 'IMG') {
+    return;
+  }
+  console.log(event.target.nodeName);
+  let instance = new SimpleLightbox('.gallery a');
+  instance = element.createElement(`
+      <div class="modal">
+         <img src="${event.target.dataset.source}" alt="Big Pictures" width="800" height="600">
+      </div>
+  `);
+  gallery.on('show.simplelightbox', function () {
+    galleryContainer.addEventListener('keyup', closeButton);
+  });
+  gallery.on('close.simplelightbox', function () {
+    galleryContainer.removeEventListener('keyup', closeButton);
+  });
+}
+
 // function clickOnGallery(event) {
 //   event.preventDefault();
 //   if (event.target.nodeName !== 'IMG') {
@@ -36,7 +51,7 @@ let lightbox = $('.gallery a').simpleLightbox({
 //         galleryContainer.addEventListener('keyup', closeButton);
 //       },
 //       onClose: instance => {
-//         galleryContainer.removeEventListener('keyup', closeButton);
+// galleryContainer.removeEventListener('keyup', closeButton);
 //       },
 //     }
 //   );
