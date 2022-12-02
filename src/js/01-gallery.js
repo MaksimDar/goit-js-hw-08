@@ -1,5 +1,6 @@
 // Add imports above this line
 import SimpleLightbox from 'simplelightbox';
+
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { galleryItems } from './gallery-items';
 
@@ -12,38 +13,42 @@ const gallery = createGallery(galleryItems);
 galleryContainer.innerHTML = gallery;
 galleryContainer.addEventListener('click', clickOnGallery);
 
-function clickOnGallery(event) {
-  event.preventDefault();
-  if (event.target.nodeName !== 'IMG') {
-    return;
-  }
-  console.log(event.target.nodeName);
-  let instance = new SimpleLightbox('.gallery', {});
-  <div class="modal">
-    <a href="images/image1.jpg">
-      <img src="${event.target.dataset.source}" alt="" title="" />
-    </a>
-  </div>;
+let lightbox = $('.gallery a').simpleLightbox({
+  scrollZoom: false,
+  captionsData: 'alt',
+  captionDelay: 250,
+});
+// function clickOnGallery(event) {
+//   event.preventDefault();
+//   if (event.target.nodeName !== 'IMG') {
+//     return;
+//   }
+//   console.log(event.target.nodeName);
 
-  //   <div class="modal">
-  //      <img src="${event.target.dataset.source}" alt="Big Pictures" width="800" height="600">
-  //   </div>
+//   const instance = basicLightbox.create(
+//     `
+//       <div class="modal">
+//          <img src="${event.target.dataset.source}" alt="Big Pictures" width="800" height="600">
+//       </div>
+//   `,
+//     {
+//       onShow: instance => {
+//         galleryContainer.addEventListener('keyup', closeButton);
+//       },
+//       onClose: instance => {
+//         galleryContainer.removeEventListener('keyup', closeButton);
+//       },
+//     }
+//   );
 
-  //   onShow: instance => {
-  //     galleryContainer.addEventListener('keyup', closeButton);
-  //   },
-  //   onClose: instance => {
-  //     galleryContainer.removeEventListener('keyup', closeButton);
-  //   },
+//   function closeButton(event) {
+//     if (event.key === 'Escape') {
+//       instance.close();
+//     }
+//   }
 
-  function closeButton(event) {
-    if (event.key === 'Escape') {
-      instance.close();
-    }
-  }
-
-  instance.show();
-}
+//   instance.show();
+// }
 
 function createGallery(galleryItems) {
   return galleryItems
