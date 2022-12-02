@@ -35,6 +35,13 @@ function clickOnGallery(event) {
   gallery.on('close.simplelightbox', function () {
     galleryContainer.removeEventListener('keyup', closeButton);
   });
+  gallery.on('show.simplelightbox', function () {
+    galleryContainer.addEventListener('keyup', closeButton);
+  });
+  gallery.on('close.simplelightbox', function () {
+    galleryContainer.removeEventListener('keyup', closeButton);
+  });
+
   function closeButton(event) {
     if (event.key === 'Escape') {
       instance.close();
