@@ -24,7 +24,7 @@ function clickOnGallery(event) {
     captionsData: 'alt',
     captionDelay: 250,
   });
-  instance = element.createElement(`
+  instance.createElement(`
       <div class="modal">
          <img src="${event.target.dataset.source}" alt="Big Pictures" width="800" height="600">
       </div>
