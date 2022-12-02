@@ -19,7 +19,11 @@ function clickOnGallery(event) {
     return;
   }
   console.log(event.target.nodeName);
-  let instance = new SimpleLightbox('.gallery a');
+  let instance = new SimpleLightbox('.gallery a', {
+    scrollZoom: false,
+    captionsData: 'alt',
+    captionDelay: 250,
+  });
   instance = element.createElement(`
       <div class="modal">
          <img src="${event.target.dataset.source}" alt="Big Pictures" width="800" height="600">
@@ -31,6 +35,13 @@ function clickOnGallery(event) {
   gallery.on('close.simplelightbox', function () {
     galleryContainer.removeEventListener('keyup', closeButton);
   });
+  function closeButton(event) {
+    if (event.key === 'Escape') {
+      instance.close();
+    }
+  }
+
+  instance.show();
 }
 
 // function clickOnGallery(event) {
