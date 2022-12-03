@@ -24,13 +24,11 @@ function clickOnGallery(event) {
     captionsData: 'alt',
     captionDelay: 250,
   });
-  const image = document.createElement('img');
-  image.src = '${event.target.dataset.source}';
-  image.alt = 'Big Pictures';
-  image.width = '800';
-  image.height = '600';
-  //  <img src="${event.target.dataset.source}" alt="Big Pictures" width="800" height="600">
-  //
+  // const image = SimpleLightbo.create(`
+  //   //
+  //   //      <img src="${event.target.dataset.source}" alt="Big Pictures" width="800" height="600">
+  //   //
+  // `);
   gallery.on('show.simplelightbox', function () {
     galleryContainer.addEventListener('keyup', closeButton);
   });
