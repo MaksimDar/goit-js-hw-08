@@ -24,25 +24,6 @@ function clickOnGallery(event) {
     captionsData: 'alt',
     captionDelay: 250,
   });
-
-  //   //
-  //   //      <img src="${event.target.dataset.source}" alt="Big Pictures" width="800" height="600">
-  //   //
-  // `);
-  // gallery.on('show.simplelightbox', function () {
-  //   galleryContainer.addEventListener('keyup', closeButton);
-  // });
-  // gallery.on('close.simplelightbox', function () {
-  //   galleryContainer.removeEventListener('keyup', closeButton);
-  // });
-
-  // function closeButton(event) {
-  //   if (event.key === 'Escape') {
-  //     instance.close();
-  //   }
-  // }
-
-  // instance.show();
 }
 
 // function clickOnGallery(event) {
