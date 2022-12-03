@@ -22,7 +22,7 @@ function clickOnGallery(event) {
   let instance = new SimpleLightbox('.gallery a', {
     scrollZoom: false,
     captionsData: 'alt',
-    captionDelay: 250,
+    captionDelay: 300,
   });
 }
 
