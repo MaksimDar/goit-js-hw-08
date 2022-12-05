@@ -7,15 +7,15 @@ const LOCAL_STORAGE_KEY = 'feedback-form-state';
 
 email.required = true;
 message.required = true;
-const Data = {};
-StorageState();
+const data = {};
+storageState();
 
 feedbackForm.addEventListener('input', throttle(saveMessage, 500));
 feedbackForm.addEventListener('submit', submitOnForm);
 
 function saveMessage(event) {
-  Data[event.target.name] = event.target.value;
-  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(Data));
+  data[event.target.name] = event.target.value;
+  localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(data));
 }
 
 function submitOnForm(event) {
@@ -23,16 +23,16 @@ function submitOnForm(event) {
 
   event.currentTarget.reset();
   localStorage.removeItem(LOCAL_STORAGE_KEY);
-  console.log(Data);
+  console.log(data);
 }
 
-function StorageState() {
+function storageState() {
   const dataPreserved = localStorage.getItem(LOCAL_STORAGE_KEY);
 
   if (dataPreserved) {
     const dataParsed = JSON.parse(dataPreserved);
     Object.entries(dataParsed).forEach(([name, value]) => {
-      formData[name] = value;
+      data[name] = value;
       feedbackForm.elements[name].value = value;
     });
   }
